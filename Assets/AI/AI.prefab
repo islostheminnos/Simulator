@@ -64,7 +64,7 @@ PrefabInstance:
       addedObject: {fileID: -117686839048489530}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 76e842063c129b048af2d216be514f66, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1680890373287878985}
+      addedObject: {fileID: 3845145468270981251}
   m_SourcePrefab: {fileID: 100100000, guid: 76e842063c129b048af2d216be514f66, type: 3}
 --- !u!1 &1466127727429681141 stripped
 GameObject:
@@ -101,7 +101,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1466127727429681141}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -110,11 +110,11 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1.82
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1680890373287878985
+--- !u!114 &3845145468270981251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466127727429681141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d51b7ae7f814146bc841c4a64a7da7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2afbf7e19d36499489526d9934da8a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdDistance: 0.1
-  chairTag: Chair
   tableTag: Table
