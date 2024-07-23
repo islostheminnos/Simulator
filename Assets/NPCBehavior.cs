@@ -1,23 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class NPCBehavior : MonoBehaviour
 {
-    
     private Animator aiAnim;
     private NavMeshAgent agent;
     private Transform chair;
     private Transform exitPoint;
 
-
-    private float minSitDuration = 90.0f; // En az oturma süresi (1.5 dakika)
-    private float maxAdditionalSitDuration = 15.0f; // Ek rastgele oturma süresi (0-1 dakika)
-    private bool isSitting = false;
+    private float minSitDuration = 10.0f; // En az oturma süresi (1.5 dakika)
+    private float maxAdditionalSitDuration = 5.0f; // Ek rastgele oturma süresi (0-1 dakika)
+    public bool isSitting = false;
     public string tableTag = "Table"; // Masaların tag'ı
+    public GameObject[] placeableOrders;
 
+    public GameObject orderEmote;
+
+    void Awake()
+    {
+       
+        
+    }
 
     public void Initialize(Transform chair, Transform exitPoint, float sitDuration)
     {
@@ -48,6 +56,9 @@ public class NPCBehavior : MonoBehaviour
         aiAnim.SetTrigger("isSitting");
         transform.LookAt(chair);
 
+        // Random order seç ve currentImage sprite'ını güncelle
+        RandomOrderSelector();
+
         // En yakın masayı bul ve ona bak
         FindClosestTable();
 
@@ -61,7 +72,8 @@ public class NPCBehavior : MonoBehaviour
         aiAnim.ResetTrigger("isSitting");
         aiAnim.SetTrigger("isWalking");
         agent.destination = exitPoint.position;
-
+        isSitting = false;
+        OrderDestroy();
         // Exit point'e yürüdükten sonra yok olmayı bekle
         while (agent.remainingDistance > 0.1f || agent.pathPending)
         {
@@ -102,5 +114,46 @@ public class NPCBehavior : MonoBehaviour
         }
     }
 
-    
+    public void RandomOrderSelector()
+    {
+        if (isSitting)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, placeableOrders.Length);
+
+            switch (randomIndex)
+            {
+                case 0:
+                    Instantiate(placeableOrders[0], orderEmote.transform);
+                  
+                    break;
+                case 1:
+                    Instantiate(placeableOrders[1], orderEmote.transform);
+                   
+                    break;
+                case 2:
+                    Instantiate(placeableOrders[2], orderEmote.transform);
+                    
+                    break;
+                case 3: 
+                    Instantiate(placeableOrders[3], orderEmote.transform);
+                    
+                break;
+
+                case 4: 
+                    Instantiate(placeableOrders[4], orderEmote.transform);
+                    
+                break;
+            }
+        }
+    }
+
+    void OrderDestroy(){
+        if(!isSitting){
+           foreach (Transform child in orderEmote.transform)
+    {
+        // Her bir child nesneyi yok et
+        Destroy(child.gameObject);
+    }
+        }
+    }
 }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7499218166682105780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5002384666103654311}
+  m_Layer: 0
+  m_Name: OrderPlaceholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5002384666103654311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499218166682105780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.384, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2239251959061914959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1772679614196794020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,11 +41,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 76e842063c129b048af2d216be514f66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.54
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76e842063c129b048af2d216be514f66, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.387
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76e842063c129b048af2d216be514f66, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,7 +85,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76e842063c129b048af2d216be514f66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5002384666103654311}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 76e842063c129b048af2d216be514f66, type: 3}
       insertIndex: -1
@@ -126,4 +160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afbf7e19d36499489526d9934da8a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSitting: 0
   tableTag: Table
+  placeableOrders:
+  - {fileID: 3159454344728198449, guid: ce657c3397521694dbec78732b918749, type: 3}
+  - {fileID: 1033662730272814184, guid: 04ebf6be58267514b9ea92bd46ebcd67, type: 3}
+  - {fileID: 1227833508647291008, guid: 0c30e8b56015fe64b806a0ba3cb19b1f, type: 3}
+  - {fileID: 1544314090394057305, guid: ae80c9b3399f5464ab416eb384c375dc, type: 3}
+  - {fileID: 4065425383695533447, guid: 0e0077b477e8d2646be3807046953fbf, type: 3}
+  orderEmote: {fileID: 7499218166682105780}
+--- !u!4 &2239251959061914959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 76e842063c129b048af2d216be514f66, type: 3}
+  m_PrefabInstance: {fileID: 1772679614196794020}
+  m_PrefabAsset: {fileID: 0}

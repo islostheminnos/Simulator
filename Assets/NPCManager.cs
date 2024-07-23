@@ -37,8 +37,24 @@ public class NPCManager : MonoBehaviour
             if (chairScript != null && !chairScript.isTargeted)
             {
                 GameObject npc = Instantiate(npcPrefab, spawnPoint.position, Quaternion.identity);
+
+                // Referansları atama
                 NPCBehavior npcBehavior = npc.GetComponent<NPCBehavior>();
-                npcBehavior.Initialize(chair.transform, exitPoint, sitDuration);
+                
+
+                if (npcBehavior != null)
+                {
+                    npcBehavior.Initialize(chair.transform, exitPoint, sitDuration);
+
+                    // Referansları birbirine atama
+                  
+                    
+                }
+                else
+                {
+                    Debug.LogError("NPC prefab does not contain NPCBehavior or OrderManager component.");
+                }
+
                 chairScript.isTargeted = true;
                 break;
             }
