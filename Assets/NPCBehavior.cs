@@ -13,8 +13,8 @@ public class NPCBehavior : MonoBehaviour
     private Transform chair;
     private Transform exitPoint;
 
-    private float minSitDuration = 10.0f; // En az oturma süresi (1.5 dakika)
-    private float maxAdditionalSitDuration = 5.0f; // Ek rastgele oturma süresi (0-1 dakika)
+    private float minSitDuration = 60.0f; // En az oturma süresi (1.5 dakika)
+    private float maxAdditionalSitDuration = 90.0f; // Ek rastgele oturma süresi (0-1 dakika)
     public bool isSitting = false;
     public string tableTag = "Table"; // Masaların tag'ı
     public GameObject[] placeableOrders;
