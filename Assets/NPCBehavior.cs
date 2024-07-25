@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
@@ -20,12 +21,7 @@ public class NPCBehavior : MonoBehaviour
     public GameObject[] placeableOrders;
 
     public GameObject orderEmote;
-
-    void Awake()
-    {
-       
-        
-    }
+    private GameObject currentOrder; // Mevcut sipariş objesini saklamak için
 
     public void Initialize(Transform chair, Transform exitPoint, float sitDuration)
     {
@@ -45,8 +41,6 @@ public class NPCBehavior : MonoBehaviour
         {
             StartCoroutine(SitAndLeave());
         }
-
-       
     }
 
     private IEnumerator SitAndLeave()
@@ -56,7 +50,7 @@ public class NPCBehavior : MonoBehaviour
         aiAnim.SetTrigger("isSitting");
         transform.LookAt(chair);
 
-        // Random order seç ve currentImage sprite'ını güncelle
+        // Random order seç ve currentOrder referansını güncelle
         RandomOrderSelector();
 
         // En yakın masayı bul ve ona bak
@@ -66,7 +60,7 @@ public class NPCBehavior : MonoBehaviour
         yield return new WaitForSeconds(minSitDuration);
 
         // Rastgele bir süre bekle (0-60 saniye arasında)
-        float additionalWait = Random.Range(0.0f, maxAdditionalSitDuration);
+        float additionalWait = UnityEngine.Random.Range(0.0f, maxAdditionalSitDuration);
         yield return new WaitForSeconds(additionalWait);
 
         aiAnim.ResetTrigger("isSitting");
@@ -120,40 +114,26 @@ public class NPCBehavior : MonoBehaviour
         {
             int randomIndex = UnityEngine.Random.Range(0, placeableOrders.Length);
 
-            switch (randomIndex)
-            {
-                case 0:
-                    Instantiate(placeableOrders[0], orderEmote.transform);
-                  
-                    break;
-                case 1:
-                    Instantiate(placeableOrders[1], orderEmote.transform);
-                   
-                    break;
-                case 2:
-                    Instantiate(placeableOrders[2], orderEmote.transform);
-                    
-                    break;
-                case 3: 
-                    Instantiate(placeableOrders[3], orderEmote.transform);
-                    
-                break;
-
-                case 4: 
-                    Instantiate(placeableOrders[4], orderEmote.transform);
-                    
-                break;
-            }
+            // Yeni sipariş objesini currentOrder olarak sakla
+            currentOrder = Instantiate(placeableOrders[randomIndex], orderEmote.transform);
         }
     }
 
-    void OrderDestroy(){
-        if(!isSitting){
-           foreach (Transform child in orderEmote.transform)
+    void OrderDestroy()
     {
-        // Her bir child nesneyi yok et
-        Destroy(child.gameObject);
+        if (!isSitting && currentOrder != null)
+        {
+            Destroy(currentOrder);
+        }
     }
+
+    // Bu yöntemi sipariş teslim edildiğinde çağırın
+    public void OnOrderDelivered()
+    {
+        if (currentOrder != null)
+        {
+            Destroy(currentOrder);
+            currentOrder = null;
         }
     }
 }

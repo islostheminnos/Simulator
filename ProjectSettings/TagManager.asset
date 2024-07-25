@@ -7,6 +7,11 @@ TagManager:
   - Chair
   - Table
   - NPC
+  - Bardak
+  - Caydanlik
+  - Tepsi
+  - Tezgah
+  - Suluk
   layers:
   - Default
   - TransparentFX
