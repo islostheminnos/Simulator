@@ -26,9 +26,7 @@ public class NPCBehavior : MonoBehaviour
     private AudioSource audioSource;
 
 
-    void Awake(){
-        audioSource = GetComponent<AudioSource>();
-    }
+    
     public void Initialize(Transform chair, Transform exitPoint, float sitDuration)
     {
         this.chair = chair;

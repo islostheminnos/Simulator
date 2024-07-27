@@ -425,7 +425,7 @@ AudioSource:
   m_Volume: 0.29
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -506,14 +506,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &112666274
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112666265}
-  m_Enabled: 1
 --- !u!1001 &119895963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4215,9 +4207,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2507721540731250912, guid: 510f400b2235f4640a1f300f8519804e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 112666269}
-    - targetCorrespondingSourceObject: {fileID: 2507721540731250912, guid: 510f400b2235f4640a1f300f8519804e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 112666274}
     - targetCorrespondingSourceObject: {fileID: 2507721540731250912, guid: 510f400b2235f4640a1f300f8519804e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 112666273}
